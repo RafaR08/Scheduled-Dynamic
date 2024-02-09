@@ -33,11 +33,10 @@ public class Utils {
         List<Programadas> listCompleta = new ArrayList<>();
 
         listaParticion.forEach(p -> {
-
-            calendar.add(Calendar.SECOND, 1);//sumar el intervalo
-            System.out.println("Registros por segundo: " + p.size());
+            horaActual = horaActual.plusSeconds(1);
+           // System.out.println("Registros por segundo: " + p.size());
            // h.setHora(LocalDateTime.ofInstant( calendar.toInstant(), calendar.getTimeZone().toZoneId()).toLocalTime().toString());
-            Consumer<Programadas> consumerHora = h -> h.setHora(nuevaHoraStr);
+            Consumer<Programadas> consumerHora = h -> h.setHora(horaActual.format(formatter));
             listCompleta.addAll(p.stream().peek(consumerHora).collect(Collectors.toList()));
 
         });
@@ -86,7 +85,7 @@ public class Utils {
 //        LocalDateTime dateTime = LocalDateTime.of(fecha, hora);
 //
 //        DateTimeFormatter cronFormatter = DateTimeFormatter.ofPattern("ss mm HH dd MM ?");
-//        System.out.println("crn format" + cronFormatter);
+//       // System.out.println("crn format" + cronFormatter);
 //        return cronFormatter.format(dateTime);
 
         String dateFull = new StringBuilder(convertirCron.getDia().toString()).append(" ").append(convertirCron.getHora()).toString();

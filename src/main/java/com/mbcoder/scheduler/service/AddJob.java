@@ -30,51 +30,59 @@ import java.util.stream.Collectors;
 @Service
 public class AddJob implements SchedulingConfigurer {
 
-  private static Logger LOGGER = LoggerFactory.getLogger(AddJob.class);
-  private ScheduledTaskRegistrar scheduledTaskRegistrar;
+    private static Logger LOGGER = LoggerFactory.getLogger(AddJob.class);
+    private ScheduledTaskRegistrar scheduledTaskRegistrar;
 
-  @Autowired
-  ProgramadasRepo programadasRepo;
-
-
-  @Bean
-  public TaskScheduler poolScheduler3() {
-    ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-    scheduler.setThreadNamePrefix("ThreadPoolTaskScheduler3");
-    scheduler.setPoolSize(Constantes.POOL_SIZE);
-    scheduler.initialize();
-    return scheduler;
-  }
+    @Autowired
+    ProgramadasRepo programadasRepo;
 
 
-  @Override
-  public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-    if (scheduledTaskRegistrar == null) {
-      scheduledTaskRegistrar = taskRegistrar;
+    @Bean
+    public TaskScheduler poolScheduler3() {
+        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+        scheduler.setThreadNamePrefix("ThreadPoolTaskScheduler3");
+        scheduler.setPoolSize(Constantes.POOL_SIZE);
+        scheduler.initialize();
+        return scheduler;
     }
-    if (taskRegistrar.getScheduler() == null) {
-      taskRegistrar.setScheduler(poolScheduler3());
+
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        if (scheduledTaskRegistrar == null) {
+            scheduledTaskRegistrar = taskRegistrar;
+        }
+        if (taskRegistrar.getScheduler() == null) {
+            taskRegistrar.setScheduler(poolScheduler3());
+        }
     }
-  }
 
 
-  public void addJob(List<Programadas> myList) {
-    System.out.println("myList " + myList);
+    public void addJob(List<Programadas> myList) {
+        System.out.println("myList " + myList);
 
-    myList.forEach(x -> {
+        myList.forEach(x -> {
 
-      scheduledTaskRegistrar.getScheduler().schedule(this::demo,
-          t -> {
-            CronTrigger trigger = new CronTrigger(Utils.convertirAExpresionCron(x));
-            return trigger.nextExecutionTime(t);
-          });
-    });
-    configureTasks(scheduledTaskRegistrar);
-  }
+            scheduledTaskRegistrar.getScheduler().schedule(
 
-  public void demo() {
-    System.out.println("### Metodo Demo ###");
-  }
+                    () -> {
+                      System.out.println("***** Tarea ejecutada a la hora: " + x.getHora() + " *****");
+                      x.setStatus("Realizado");
+                      programadasRepo.save(x);
+
+                    },
+
+            t -> {
+                CronTrigger trigger = new CronTrigger(Utils.convertirAExpresionCron(x));
+                return trigger.nextExecutionTime(t);
+            });
+        });
+        configureTasks(scheduledTaskRegistrar);
+    }
+
+    public void demo() {
+        System.out.println("### Metodo Demo ###" );
+    }
 
 }
 

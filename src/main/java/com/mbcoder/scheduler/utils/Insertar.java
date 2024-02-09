@@ -8,13 +8,12 @@ import java.util.Calendar;
 
 public class Insertar {
 
-
     public static void main(String[] args) {
 
 
         String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=dbIne;TrustServerCertificate=True;";
         String user = "sa";
-        String pass = "yourStrong!";
+        String pass = "Mipasword2";
 
         try (Connection conn = DriverManager.getConnection(connectionUrl, user, pass);
              Statement stmt = conn.createStatement();
@@ -76,4 +75,7 @@ public class Insertar {
 
 
     }
+
+
+
 }

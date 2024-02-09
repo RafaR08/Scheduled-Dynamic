@@ -54,16 +54,13 @@ public class ServiceScheduler implements SchedulingConfigurer {
                 int recordsPerSecond = Utils.operacionesPorSegundo(inicio, fin, list.size());
 
                 List<List<Programadas>> programadasPorSegundo = ListUtils.partition(list, recordsPerSecond);
-                System.out.println("programadas por segundo "+programadasPorSegundo);
+               // System.out.println("programadas por segundo "+programadasPorSegundo);
 
                 List<Programadas>  listaIntervalos =  Utils.listaIntervalos(programadasPorSegundo);
-                System.out.println("lista intervalos" + listaIntervalos);
+               // System.out.println("lista intervalos" + listaIntervalos);
 
                 externalJob.addJob(listaIntervalos);
 
-                
-
-//todo:Raulgtzm
 
              //  Utils.procesarJob(programadasPorSegundo, externalJob::addJob);
 
