@@ -31,7 +31,6 @@ public class SchedulingController {
     }
 
 
-
     @GetMapping("mostrar")
     ResponseEntity<List<Programadas>> mostrar(){
         List<Programadas> fechas = impl.mostrar();

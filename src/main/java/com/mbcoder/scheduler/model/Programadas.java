@@ -28,7 +28,7 @@ public class Programadas {
 
 
     private static final long serialVersionUID = 1L;
-    
+
 
     public Integer getRegistroId() {
         return registroId;
@@ -42,13 +42,9 @@ public class Programadas {
         return status;
     }
 
-
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
 
     public String getHora() {
         return hora;

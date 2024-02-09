@@ -59,14 +59,13 @@ public class AddJob implements SchedulingConfigurer {
 
 
     public void addJob(List<Programadas> myList) {
-        System.out.println("myList " + myList);
 
         myList.forEach(x -> {
 
             scheduledTaskRegistrar.getScheduler().schedule(
 
                     () -> {
-                      System.out.println("***** Tarea ejecutada a la hora: " + x.getHora() + " *****");
+                      System.out.println("### Tarea ejecutada a la hora: " + x.getHora() + " ###");
                       x.setStatus("Realizado");
                       programadasRepo.save(x);
 
@@ -78,10 +77,6 @@ public class AddJob implements SchedulingConfigurer {
             });
         });
         configureTasks(scheduledTaskRegistrar);
-    }
-
-    public void demo() {
-        System.out.println("### Metodo Demo ###" );
     }
 
 }
