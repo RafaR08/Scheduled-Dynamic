@@ -28,9 +28,7 @@ public class Programadas {
 
 
     private static final long serialVersionUID = 1L;
-
-    public Programadas(Programadas programadas) {
-    }
+    
 
     public Integer getRegistroId() {
         return registroId;
