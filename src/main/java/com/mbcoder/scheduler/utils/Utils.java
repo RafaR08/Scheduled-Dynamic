@@ -25,6 +25,7 @@ public class Utils {
 
     public static List<Programadas> listaIntervalos(List<List<Programadas>> listaParticion) {
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, 1);
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String nuevaHoraStr = sdf.format(calendar.getTime());
 
@@ -76,19 +77,30 @@ public class Utils {
 
     public static String convertirAExpresionCron(Programadas convertirCron)  {
 
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fecha = LocalDate.parse(convertirCron.getDia().toString(), dateFormatter);
+//        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        LocalDate fecha = LocalDate.parse(convertirCron.getDia().toString(), dateFormatter);
+//
+//        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        LocalTime hora = LocalTime.parse(convertirCron.getHora(), timeFormatter);
+//
+//        LocalDateTime dateTime = LocalDateTime.of(fecha, hora);
+//
+//        DateTimeFormatter cronFormatter = DateTimeFormatter.ofPattern("ss mm HH dd MM ?");
+//        System.out.println("crn format" + cronFormatter);
+//        return cronFormatter.format(dateTime);
 
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalTime hora = LocalTime.parse(convertirCron.getHora(), timeFormatter);
+        String dateFull = new StringBuilder(convertirCron.getDia().toString()).append(" ").append(convertirCron.getHora()).toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime ldt = LocalDateTime.parse(dateFull, formatter);
 
-        LocalDateTime dateTime = LocalDateTime.of(fecha, hora);
-
-        DateTimeFormatter cronFormatter = DateTimeFormatter.ofPattern("ss mm HH dd MM ?");
-        System.out.println("crn format" + cronFormatter);
-        return cronFormatter.format(dateTime);
+        String seg = String.valueOf(ldt.getSecond());
+        String min = String.valueOf(ldt.getMinute());
+        String hr = String.valueOf(ldt.getHour());
+        String day = String.valueOf(ldt.getDayOfMonth());
+        String month = String.valueOf(ldt.getMonthValue());
+        String[] strArr = {seg, min, hr, day, month, "*"};
+        return Stream.of(strArr).collect(Collectors.joining(" "));
     }
-
 
     public static void procesarJob(List<List<Programadas>> programadasPorSegundo, Consumer<List<Programadas>> jobConsumer) {
 

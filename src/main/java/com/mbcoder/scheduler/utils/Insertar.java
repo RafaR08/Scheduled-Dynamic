@@ -14,7 +14,7 @@ public class Insertar {
 
         String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=dbIne;TrustServerCertificate=True;";
         String user = "sa";
-        String pass = "Mipasword2";
+        String pass = "yourStrong!";
 
         try (Connection conn = DriverManager.getConnection(connectionUrl, user, pass);
              Statement stmt = conn.createStatement();
