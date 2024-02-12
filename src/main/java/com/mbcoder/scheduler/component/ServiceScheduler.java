@@ -34,7 +34,7 @@ public class ServiceScheduler implements SchedulingConfigurer {
         LocalDateTime inicio = LocalDateTime.now().withHour(13).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime fin = LocalDateTime.now().withHour(13).withMinute(0).withSecond(8).withNano(0);
 
-          if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, 0)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, 59))) {
+          if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, Constantes.MINUTO_INICIO)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, Constantes.MINUTO_FIN))) {
 
             System.out.println("Registros Reprogramados " + "Hora Actual: " + horaActual);
 

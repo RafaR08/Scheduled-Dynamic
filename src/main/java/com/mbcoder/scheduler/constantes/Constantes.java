@@ -3,7 +3,11 @@ package com.mbcoder.scheduler.constantes;
 public class Constantes {
 
     public static final int HORA_INICIO = 9;
+
+    public static final int MINUTO_INICIO = 0;
     public static final int HORA_FIN = 23;
+
+    public static final int MINUTO_FIN = 0;
 
     public static final int POOL_SIZE = 10;
 
@@ -20,3 +24,4 @@ public class Constantes {
 
 
 }
+

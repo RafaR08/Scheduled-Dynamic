@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class Utils {
@@ -47,17 +48,6 @@ public class Utils {
 
     public static String convertirAExpresionCron(Programadas convertirCron)  {
 
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fecha = LocalDate.parse(convertirCron.getDia().toString(), dateFormatter);
-
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalTime hora = LocalTime.parse(convertirCron.getHora(), timeFormatter);
-
-        LocalDateTime dateTime = LocalDateTime.of(fecha, hora);
-        DateTimeFormatter cronFormatter = DateTimeFormatter.ofPattern("ss mm HH dd MM ?");
-
-        return cronFormatter.format(dateTime);
-/*
         String dateFull = new StringBuilder(convertirCron.getDia().toString()).append(" ").append(convertirCron.getHora()).toString();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime ldt = LocalDateTime.parse(dateFull, formatter);
@@ -69,8 +59,10 @@ public class Utils {
         String month = String.valueOf(ldt.getMonthValue());
         String[] strArr = {seg, min, hr, day, month, "*"};
         return Stream.of(strArr).collect(Collectors.joining(" "));
-        */
+
     }
+
+
 
 
 

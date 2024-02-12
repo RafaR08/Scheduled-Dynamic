@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="331ee567-804b-4a67-a03d-9dba84a015aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/ServiceScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/ServiceScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/constantes/Constantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/controller/SchedulingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/controller/SchedulingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/impl/PragarmadasImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/impl/PragarmadasImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/model/Programadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/entity/Programadas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/repository/ProgramadasRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/repository/ProgramadasRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/AddJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/AddJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/CronJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/CronJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/PrograServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/PrograServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/ServiceScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/ServiceScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
