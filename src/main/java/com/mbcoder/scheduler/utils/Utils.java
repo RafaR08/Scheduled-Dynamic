@@ -1,6 +1,6 @@
 package com.mbcoder.scheduler.utils;
 
-import com.mbcoder.scheduler.model.Programadas;
+import com.mbcoder.scheduler.entity.Programadas;
 
 
 import java.time.Duration;

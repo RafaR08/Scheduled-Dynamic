@@ -1,11 +1,10 @@
 package com.mbcoder.scheduler.impl;
 
-import com.mbcoder.scheduler.model.Programadas;
+import com.mbcoder.scheduler.entity.Programadas;
 import com.mbcoder.scheduler.repository.ProgramadasRepo;
-import com.mbcoder.scheduler.service.AddJob;
+import com.mbcoder.scheduler.component.AddJob;
 import com.mbcoder.scheduler.service.PrograServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,18 +17,15 @@ public class PragarmadasImpl implements PrograServices {
     ProgramadasRepo repo;
 
     @Autowired
-    AddJob externalJob;
+    AddJob addCron;
 
     @Override
     public void insertarCron(List<Programadas> proList) {
-        //antes de mandarlo a guardar cambia status en proceso
+
         proList.stream().peek(x -> x.setStatus("En Proceso")).collect(Collectors.toList());
-        externalJob.addJob(proList);
+        addCron.addJob(proList);
         repo.saveAll(proList);
     }
-
-
-
 
 
 

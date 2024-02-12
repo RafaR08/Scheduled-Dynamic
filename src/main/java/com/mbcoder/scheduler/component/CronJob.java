@@ -1,7 +1,7 @@
-package com.mbcoder.scheduler.service;
+package com.mbcoder.scheduler.component;
 
 import com.mbcoder.scheduler.constantes.Constantes;
-import com.mbcoder.scheduler.model.Programadas;
+import com.mbcoder.scheduler.entity.Programadas;
 import com.mbcoder.scheduler.repository.ProgramadasRepo;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,10 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @EnableScheduling
-@Service
+@Component
 public class CronJob{
     private static Logger LOGGER = LoggerFactory.getLogger(CronJob.class);
     @Autowired
@@ -22,7 +23,7 @@ public class CronJob{
     @Autowired
     ProgramadasRepo programadasRepo;
 
-    @Scheduled(cron = Constantes.CRON)
+    @Scheduled(cron = Constantes.CRON_TIME)
     public void getCronDB() {
 
             LOGGER.info("printCron: Print every 10 seconds with cron");

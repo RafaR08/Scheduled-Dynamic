@@ -1,17 +1,12 @@
 package com.mbcoder.scheduler.controller;
 
 import com.mbcoder.scheduler.impl.PragarmadasImpl;
-import com.mbcoder.scheduler.model.Programadas;
-import com.mbcoder.scheduler.repository.ProgramadasRepo;
-import com.mbcoder.scheduler.service.CronJob;
-import com.mbcoder.scheduler.service.AddJob;
+import com.mbcoder.scheduler.entity.Programadas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

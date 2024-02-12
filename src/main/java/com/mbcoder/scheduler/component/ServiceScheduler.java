@@ -1,44 +1,38 @@
-package com.mbcoder.scheduler.service;
+package com.mbcoder.scheduler.component;
 
 
 import com.mbcoder.scheduler.constantes.Constantes;
-import com.mbcoder.scheduler.model.Programadas;
+import com.mbcoder.scheduler.entity.Programadas;
 import com.mbcoder.scheduler.repository.ProgramadasRepo;
 import com.mbcoder.scheduler.utils.Utils;
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-import org.springframework.stereotype.Service;
-
-
+import org.springframework.stereotype.Component;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-@Service
+@Component
 public class ServiceScheduler implements SchedulingConfigurer {
 
     @Autowired
     ProgramadasRepo programadasRepo;
 
     @Autowired
-    private AddJob externalJob;
-
+    private AddJob addCron;
 
     static LocalTime horaActual = LocalTime.now();
 
-    Calendar calendar = Calendar.getInstance();//obtener la instancia
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 
         LocalDateTime inicio = LocalDateTime.now().withHour(13).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime fin = LocalDateTime.now().withHour(14).withMinute(0).withSecond(0).withNano(0);
+        LocalDateTime fin = LocalDateTime.now().withHour(13).withMinute(0).withSecond(8).withNano(0);
 
           if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, 0)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, 59))) {
 
@@ -49,12 +43,13 @@ public class ServiceScheduler implements SchedulingConfigurer {
 
             if (!list.isEmpty()) {
 
-                int recordsPerSecond = Utils.operacionesPorSegundo(inicio, fin, list.size());
+                int registrosPorSegundo = Utils.operacionesPorSegundo(inicio, fin, list.size());
 
-                List<List<Programadas>> programadasPorSegundo = ListUtils.partition(list, recordsPerSecond);
-                List<Programadas>  listaIntervalos =  Utils.listaIntervalos(programadasPorSegundo);
+                List<List<Programadas>> particionDeRegistos = ListUtils.partition(list, registrosPorSegundo);
 
-                externalJob.addJob(listaIntervalos);
+                List<Programadas>  listaIntervalos =  Utils.listaIntervalos( particionDeRegistos);
+
+                addCron.addJob(listaIntervalos);
 
 
             } else System.out.println("No se encontraron tareas pendientes");

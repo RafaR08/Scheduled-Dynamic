@@ -1,8 +1,7 @@
-package com.mbcoder.scheduler.service;
+package com.mbcoder.scheduler.component;
 
 import com.mbcoder.scheduler.constantes.Constantes;
-import com.mbcoder.scheduler.impl.PragarmadasImpl;
-import com.mbcoder.scheduler.model.Programadas;
+import com.mbcoder.scheduler.entity.Programadas;
 import com.mbcoder.scheduler.repository.ProgramadasRepo;
 import com.mbcoder.scheduler.utils.Utils;
 import org.slf4j.Logger;
@@ -15,19 +14,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.*;
-import java.util.stream.Collectors;
 
-@Service
+@Component
 public class AddJob implements SchedulingConfigurer {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AddJob.class);
@@ -59,6 +50,7 @@ public class AddJob implements SchedulingConfigurer {
 
 
     public void addJob(List<Programadas> myList) {
+        System.out.println("lista :" + myList);
 
         myList.forEach(x -> {
 
