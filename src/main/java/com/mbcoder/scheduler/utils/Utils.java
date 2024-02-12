@@ -54,7 +54,6 @@ public class Utils {
         LocalTime hora = LocalTime.parse(convertirCron.getHora(), timeFormatter);
 
         LocalDateTime dateTime = LocalDateTime.of(fecha, hora);
-
         DateTimeFormatter cronFormatter = DateTimeFormatter.ofPattern("ss mm HH dd MM ?");
 
         return cronFormatter.format(dateTime);
@@ -73,21 +72,6 @@ public class Utils {
         */
     }
 
-    public static void procesarJob(List<List<Programadas>> programadasPorSegundo, Consumer<List<Programadas>> jobConsumer) {
-
-        programadasPorSegundo.forEach(p -> {
-
-            horaActual = horaActual.plusSeconds(1);
-            System.out.println("tamaño sublistas: " + p.size());
-
-            p.forEach(x -> {
-                x.setHora(horaActual.format(formatter));
-                System.out.println("hora " + x.getHora() + " ->id" + x.getRegistroId());
-            });
-            jobConsumer.accept(p);
-
-        });
-    }
 
 
 }

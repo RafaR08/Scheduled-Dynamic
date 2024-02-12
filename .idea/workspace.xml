@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="331ee567-804b-4a67-a03d-9dba84a015aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/PendienteCron.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/component/ScheduledAspecto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/config/SchedulingConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/controller/SchedulingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/controller/SchedulingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/model/Programadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/model/Programadas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/AddJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/AddJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/ServiceScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/service/ServiceScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Split.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Insertar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Insertar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mbcoder/scheduler/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +55,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Maven.scheduler [spring-boot:run]">
+  <component name="RunManager" selected="Application.Insertar">
     <configuration name="Insertar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mbcoder.scheduler.utils.Insertar" />
       <module name="scheduler" />

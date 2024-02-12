@@ -7,7 +7,7 @@ public class Constantes {
 
     public static final int POOL_SIZE = 10;
 
-    public static final String cron =  "*/5 * 9-23 * * MON-FRI";
+    public static final String CRON =  "*/5 * 9-20 * * MON-FRI";
 
 
     //QUERYS
@@ -18,5 +18,5 @@ public class Constantes {
             "AND CAST(GETDATE() AS DATE) = CAST(REGISTROS.Dia AS DATE) " +
             "AND   REGISTROS.Hora >= :horaActual";
 
-    public static final String GETFIND_NOMBRES = "SELECT * FROM REGISTROS WHERE REGISTROS.Status LIKE %:name%";
+
 }

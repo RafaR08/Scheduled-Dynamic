@@ -22,7 +22,7 @@ public class CronJob{
     @Autowired
     ProgramadasRepo programadasRepo;
 
-    @Scheduled(cron = Constantes.cron)
+    @Scheduled(cron = Constantes.CRON)
     public void getCronDB() {
 
             LOGGER.info("printCron: Print every 10 seconds with cron");

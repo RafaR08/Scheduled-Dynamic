@@ -38,7 +38,7 @@ public class ServiceScheduler implements SchedulingConfigurer {
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 
         LocalDateTime inicio = LocalDateTime.now().withHour(13).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime fin = LocalDateTime.now().withHour(13).withMinute(0).withSecond(9).withNano(0);
+        LocalDateTime fin = LocalDateTime.now().withHour(14).withMinute(0).withSecond(0).withNano(0);
 
           if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, 0)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, 59))) {
 
@@ -52,15 +52,9 @@ public class ServiceScheduler implements SchedulingConfigurer {
                 int recordsPerSecond = Utils.operacionesPorSegundo(inicio, fin, list.size());
 
                 List<List<Programadas>> programadasPorSegundo = ListUtils.partition(list, recordsPerSecond);
-
-
                 List<Programadas>  listaIntervalos =  Utils.listaIntervalos(programadasPorSegundo);
 
                 externalJob.addJob(listaIntervalos);
-
-
-             //  Utils.procesarJob(programadasPorSegundo, externalJob::addJob);
-
 
 
             } else System.out.println("No se encontraron tareas pendientes");

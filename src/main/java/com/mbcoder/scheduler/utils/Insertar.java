@@ -29,11 +29,11 @@ public class Insertar {
             String strhour1 = null;
 
             int contador = 0;
-            int registros_bacht = 50;//cambiar el tamaño de lote
+            int registros_bacht = 100;//cambiar el tamaño de lote
             int hora = 0;
             int min = 0;
             calendar.add(Calendar.MINUTE, min + 5);//aumenta 5 min
-            for (int i = 0; i <= 50; i++) {//se insertan 600 registros
+            for (int i = 0; i <= 100; i++) {//se insertan 600 registros
 
                 if (i == 200) {
                     hora += 1;
