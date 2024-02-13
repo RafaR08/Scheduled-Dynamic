@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Component;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -27,14 +28,13 @@ public class ServiceScheduler implements SchedulingConfigurer {
     static LocalTime horaActual = LocalTime.now();
 
 
-
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 
-        LocalDateTime inicio = LocalDateTime.now().withHour(13).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime fin = LocalDateTime.now().withHour(13).withMinute(0).withSecond(8).withNano(0);
+        LocalDateTime inicio = LocalDateTime.now();
+        LocalDateTime fin = LocalDateTime.now().withHour(Constantes.HORA_FIN).withMinute(Constantes.MINUTO_FIN).withSecond(Constantes.SEGUNDO_FIN).withNano(0);
 
-          if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, Constantes.MINUTO_INICIO)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, Constantes.MINUTO_FIN))) {
+        if (horaActual.isAfter(LocalTime.of(Constantes.HORA_INICIO, Constantes.MINUTO_INICIO)) && horaActual.isBefore(LocalTime.of(Constantes.HORA_FIN, Constantes.MINUTO_FIN))) {
 
             System.out.println("Registros Reprogramados " + "Hora Actual: " + horaActual);
 
@@ -47,7 +47,7 @@ public class ServiceScheduler implements SchedulingConfigurer {
 
                 List<List<Programadas>> particionDeRegistos = ListUtils.partition(list, registrosPorSegundo);
 
-                List<Programadas>  listaIntervalos =  Utils.listaIntervalos( particionDeRegistos);
+                List<Programadas> listaIntervalos = Utils.listaIntervalos(particionDeRegistos);
 
                 addCron.addJob(listaIntervalos);
 
